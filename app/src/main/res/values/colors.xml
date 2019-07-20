@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#04273D</color>
+    <color name="colorPrimaryDark">#04273D</color>
+    <color name="colorAccent">#04273D</color>
+
+    <color name="mainBackgroundColor">#04273D</color>
+
+    <!--button-->
+    <color name="mainButtonColor">#8D094A74</color>
+    <color name="backButtonColor">#044777</color>
+    <color name="backButon">#196E9FC4</color>
+
+    <color name="mainBacekgroundColor">#0B4972</color>
+
+
+</resources>
