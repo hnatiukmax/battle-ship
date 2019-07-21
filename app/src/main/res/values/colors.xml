@@ -9,9 +9,13 @@
     <!--button-->
     <color name="mainButtonColor">#8D094A74</color>
     <color name="backButtonColor">#044777</color>
-    <color name="backButon">#196E9FC4</color>
+    <color name="backButon">#2A697177</color>
 
-    <color name="mainBacekgroundColor">#0B4972</color>
+    <color name="button_exit">#8FC0513C</color>
+    <color name="button_exit_back">#8F8B3624</color>
+
+    <color name="mainBacekgroundColor">#AEA52E14</color>
+
 
 
 </resources>

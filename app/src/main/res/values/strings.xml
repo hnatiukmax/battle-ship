@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Battle Ships</string>
     <string name="button_single">SINGLE</string>
-    <string name="two_players_button">TWO PLAYERS</string>
+    <string name="button_two_players">TWO PLAYERS</string>
+    <string name="button_exit">EXIT</string>
+    <string name="button_play_network">ONLINE</string>
+    <string name="button_play_bluetooth">BLUETOOTH</string>
 </resources>
