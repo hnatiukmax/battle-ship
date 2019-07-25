@@ -5,4 +5,8 @@
     <string name="button_exit">EXIT</string>
     <string name="button_play_network">ONLINE</string>
     <string name="button_play_bluetooth">BLUETOOTH</string>
+    <string name="button_auto">PLACE SHIPS RANDOMLY</string>
+    <string name="button_next">CONFIRM SHIPS</string>
+    <string name="textView_prepareUp">Place Your Ships</string>
+    <string name="textView_prepareDown">Drag and Drop to set Position. Tap to Rotate</string>
 </resources>
