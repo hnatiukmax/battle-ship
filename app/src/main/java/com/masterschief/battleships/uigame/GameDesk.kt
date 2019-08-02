@@ -1,36 +1,42 @@
 package com.masterschief.battleships.uigame
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.os.Handler
 import android.util.AttributeSet
 import android.view.View
 import com.masterschief.battleships.R
+import com.masterschief.battleships.utils.Point
 
-class GameDesk : View, GameDeskContract {
+abstract class GameDesk : View {
     constructor(context: Context?) : super(context)
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
-    private lateinit var gameArray : Array<IntArray>
+    protected lateinit var gameArray: Array<IntArray>
 
-    private val size = 10
-    private val colorDesk = resources.getColor(R.color.deskBackgroundColor)
-    private val colorLine = resources.getColor(R.color.mainBackgroundColor)
+    val size = 10
 
-    fun setGameArray(array : Array<IntArray>) {
-        this.gameArray = array
-    }
+    protected val strokeSize = 7f
+    protected val colorDesk = resources.getColor(R.color.deskBackgroundColor)
+    protected val colorLine = resources.getColor(R.color.mainBackgroundColor)
+    protected val colorCell = resources.getColor(R.color.deskCellColor)
+    protected val colorShip = resources.getColor(R.color.shipColor)
+    protected val colorShootedShip = resources.getColor(R.color.shipShootedColor)
 
-    override fun onDraw(canvas: Canvas?) {
-        super.onDraw(canvas)
+    /*
+        DrawMethods
+    */
 
+    //draw base node table according to size
+    protected fun drawDesk(canvas: Canvas) {
         val cvSize = canvas?.width
         val p = Paint()
-        p.strokeWidth = 7F
+        p.strokeWidth = strokeSize
         p.color = colorLine
-
-        canvas?.drawColor(colorDesk)
 
         val range = (cvSize!! / size).toFloat()
 
@@ -55,11 +61,9 @@ class GameDesk : View, GameDeskContract {
         }
     }
 
-    override fun updateDesk() {
-        
-    }
 
-    override fun showAttack() {
-
+    fun updateDesk() {
+        //Handler().postDelayed( { this.invalidate() }, 3000)
+        this.invalidate()
     }
 }

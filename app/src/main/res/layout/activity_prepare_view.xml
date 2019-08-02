@@ -10,7 +10,7 @@
             android:background="@color/mainBackgroundColor"
             tools:context=".views.PrepareView">
 
-        <com.masterschief.battleships.uigame.GameDesk
+        <com.masterschief.battleships.uigame.GamePrepareDesk
                 android:layout_width="320dp"
                 android:layout_height="320dp"
 
@@ -55,7 +55,8 @@
                 android:layout_marginEnd="35dp"
                 app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="35dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="50dp"/>
+                app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="84dp"
+                app:layout_constraintHorizontal_bias="0.0"/>
 
         <TextView
                 android:layout_width="0dp"
@@ -68,7 +69,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintBottom_toTopOf="@+id/textView_prepareDown" android:layout_marginBottom="5dp"/>
         <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:text="@string/textView_prepareDown"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
@@ -76,6 +77,12 @@
                 android:textAlignment="center" android:textAllCaps="true"
                 android:fontFamily="@font/londrinasolid_regular" app:layout_constraintHorizontal_bias="0.512"
                 android:layout_marginBottom="20dp" app:layout_constraintBottom_toTopOf="@+id/gameDesk"/>
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/ic_back"
+                android:id="@+id/button_back"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="16dp" android:layout_marginStart="16dp"/>
     </android.support.constraint.ConstraintLayout>
 
 </layout>

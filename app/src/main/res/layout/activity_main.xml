@@ -12,6 +12,15 @@
         android:background="@color/mainBackgroundColor"
         tools:context=".activities.MainActivity">
 
+    <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:srcCompat="@drawable/main_back"-->
+            <!--android:scaleType="fitXY"-->
+            <!--android:id="@+id/imageView2" app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"/>-->
+
     <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content" app:srcCompat="@drawable/main_logo"
@@ -120,6 +129,7 @@
             android:textColor="@android:color/white"
             android:fontFamily="@font/londrinasolid_regular" app:layout_constraintHorizontal_bias="0.0"
             android:layout_marginBottom="40dp" app:layout_constraintBottom_toBottomOf="parent"/>
+
 
 </android.support.constraint.ConstraintLayout>
 

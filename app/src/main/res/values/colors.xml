@@ -4,18 +4,22 @@
     <color name="colorPrimaryDark">#04273D</color>
     <color name="colorAccent">#04273D</color>
 
-    <color name="mainBackgroundColor">#04273D</color>
+    <color name="mainBackgroundColor">#1C1E30</color>
 
     <!--button-->
     <color name="mainButtonColor">#8D094A74</color>
-    <color name="backButtonColor">#044777</color>
+    <color name="backButtonColor">#2A375E</color>
     <color name="backButon">#2A697177</color>
 
-    <color name="button_exit">#8FC0513C</color>
+    <color name="button_exit">#7C380A</color>
     <color name="button_exit_back">#8F8B3624</color>
 
-    <color name="deskBackgroundColor">#104772</color>
+    <!--ui colors -->
 
+    <color name="deskBackgroundColor">#313654</color>
+    <color name="deskCellColor">#3A4168</color>
+    <color name="shipColor">#C892522A</color>
+    <color name="shipShootedColor">#C8496106</color>
 
 
 </resources>
