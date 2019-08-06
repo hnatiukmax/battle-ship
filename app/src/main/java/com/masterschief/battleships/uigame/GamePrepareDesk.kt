@@ -29,14 +29,16 @@ class GamePrepareDesk(cxt : Context, attrs : AttributeSet) : GameDesk(cxt, attrs
         val pWhole = Paint()
         pWhole.color = colorShip
 
-        val pShooted = Paint()
-        pShooted.color = colorShootedShip
+        val pChosen = Paint()
+        pChosen.color = colorChosenShip
 
+        val pBeside = Paint()
+        pBeside.color = colorBesideShip
 
         for ((r, intArray) in gameArray.withIndex()) {
             for ((c, value) in intArray.withIndex()) {
 
-                if (gameArray[r][c] == WHOLE || gameArray[r][c] == CHOSEN) {
+                if (gameArray[r][c] == WHOLE || gameArray[r][c] == CHOSEN || gameArray[r][c] == BESIDE) {
 
                     val range = (canvas.width / size).toFloat()
                     val top = r * range
@@ -47,7 +49,8 @@ class GamePrepareDesk(cxt : Context, attrs : AttributeSet) : GameDesk(cxt, attrs
                     canvas.drawRect(left, top, right, bottom,
                         when(gameArray[r][c]) {
                             WHOLE -> pWhole
-                            CHOSEN -> pShooted
+                            CHOSEN -> pChosen
+                            BESIDE -> pBeside
                             else -> Paint()
                         }
                         )

@@ -8,6 +8,7 @@ import android.graphics.Paint
 import android.os.Handler
 import android.util.AttributeSet
 import android.view.View
+import android.view.ViewGroup
 import com.masterschief.battleships.R
 import com.masterschief.battleships.utils.Point
 
@@ -25,7 +26,8 @@ abstract class GameDesk : View {
     protected val colorLine = resources.getColor(R.color.mainBackgroundColor)
     protected val colorCell = resources.getColor(R.color.deskCellColor)
     protected val colorShip = resources.getColor(R.color.shipColor)
-    protected val colorShootedShip = resources.getColor(R.color.shipShootedColor)
+    protected val colorChosenShip = resources.getColor(R.color.shipChosenColor)
+    protected val colorBesideShip = resources.getColor(R.color.shipBesideColor)
 
     /*
         DrawMethods
@@ -63,7 +65,6 @@ abstract class GameDesk : View {
 
 
     fun updateDesk() {
-        //Handler().postDelayed( { this.invalidate() }, 3000)
         this.invalidate()
     }
 }
