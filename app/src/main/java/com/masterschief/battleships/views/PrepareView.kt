@@ -9,35 +9,25 @@ import android.os.Handler
 
 import android.view.MotionEvent
 import android.view.View
+import android.view.WindowManager
 import android.view.animation.AnimationUtils
+import com.masterschief.battleships.PrepareContract
 import com.masterschief.battleships.R
 import com.masterschief.battleships.activities.FullScreenActivity
 import com.masterschief.battleships.activities.MainActivity
-
 import com.masterschief.battleships.databinding.ActivityPrepareViewBinding
-import com.masterschief.battleships.gamelogic.*
 import com.masterschief.battleships.uigame.GameDeskContract
 import com.masterschief.battleships.utils.Point
+import com.masterschief.battleships.presenters.PreparePresenter
 
-import com.masterschief.battleships.utils.log
-
-import com.masterschief.battleships.gamelogic.Direction.*
-
-import com.masterschief.battleships.utils.printArr
-
-
-class PrepareView : FullScreenActivity(), View.OnClickListener {
+class PrepareView : FullScreenActivity(), View.OnClickListener, PrepareContract.ViewContract {
     override fun onClick(v: View?) {
         v?.startAnimation(AnimationUtils.loadAnimation(this, R.anim.blink))
 
         var intent: Intent? = null
         when (v?.id) {
             R.id.button_auto -> {
-                currentShip = null
-                deskService.mix()
-                prepareViewDesk.initDesk(deskService.array2d)
-                prepareViewDesk.updateDesk()
-                printArr("end", deskService.array2d)
+                presenter?.onRandomlyButton()
             }
             R.id.button_next -> {
                 when (getIntent().getSerializableExtra("type")) {
@@ -46,19 +36,8 @@ class PrepareView : FullScreenActivity(), View.OnClickListener {
             R.id.button_back -> {
                 intent = Intent(this, MainActivity::class.java)
             }
-            R.id.textView_rotate -> {
-                currentShip?.let {
-                    deskService.rotate(it)
-                    prepareViewDesk.updateDesk()
-                }
-                Handler().postDelayed( {
-                    deskService.endOfMove(currentShip!!)
-                    prepareViewDesk.updateDesk()},
-                    200
-                )
-                printArr("end", deskService.array2d)
-
-            }
+            R.id.textView_rotate ->
+                presenter?.onRotate()
         }
         intent?.let {
             startActivity(it)
@@ -66,9 +45,7 @@ class PrepareView : FullScreenActivity(), View.OnClickListener {
     }
 
     private lateinit var binding: ActivityPrepareViewBinding
-    private lateinit var deskService: DeskService
-
-    private var currentShip: Ship? = null
+    private var presenter : PrepareContract.PresenterContract? = null
 
     //UI
     private lateinit var prepareViewDesk: GameDeskContract.PrepareDesk
@@ -76,21 +53,55 @@ class PrepareView : FullScreenActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_prepare_view)
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+
+        //typeGame  = intent.getSerializableExtra("type") as TypeGame
 
         initUI()
+        attachPresenter()
     }
 
     private fun initUI() {
-        deskService = DeskService()
-
-        prepareViewDesk = binding.gameDesk as GameDeskContract.PrepareDesk
-        prepareViewDesk.initDesk(deskService.array2d)
+        prepareViewDesk = binding.gameDesk
         (prepareViewDesk as View).setOnTouchListener(listener)
 
         binding.buttonAuto?.setOnClickListener(this)
         binding.buttonNext?.setOnClickListener(this)
         binding.buttonBack?.setOnClickListener(this)
         binding.textViewRotate?.setOnClickListener(this)
+    }
+
+    /*
+        Life cycle
+    */
+
+    private fun attachPresenter() {
+        presenter = lastCustomNonConfigurationInstance as PrepareContract.PresenterContract?
+        if (presenter == null) {
+            presenter = PreparePresenter()
+        }
+        presenter?.attachView(this)
+    }
+
+    override fun onDestroy() {
+        presenter?.detachView()
+        super.onDestroy()
+    }
+
+    override fun onRetainCustomNonConfigurationInstance(): PrepareContract.PresenterContract? {
+        return presenter
+    }
+
+    /*
+        Contract interface methods
+    */
+
+    override fun updateDesk() {
+        prepareViewDesk.updateDesk()
+    }
+
+    override fun setDesk(desk: Array<IntArray>) {
+        prepareViewDesk.initDesk(desk)
     }
 
     private val listener = View.OnTouchListener { v, event ->
@@ -103,45 +114,14 @@ class PrepareView : FullScreenActivity(), View.OnClickListener {
 
         when (event.action) {
             MotionEvent.ACTION_DOWN // нажатие
-            -> when {
-                deskService.array2d[y][x] == WHOLE -> {
-
-                    currentShip = deskService.makeSelected(Point(y, x))
-                    prepareViewDesk.updateDesk()
-                }
-
-                deskService.array2d[y][x] != CHOSEN && currentShip != null -> {
-                    deskService.makeUnselected(currentShip!!)
-                    currentShip = null
-                    prepareViewDesk.updateDesk()
-                }
-
-            }
+            ->
+                presenter?.onDown(Point(y,x))
             MotionEvent.ACTION_MOVE // движение
-            -> {
-                if (currentShip != null && !currentShip?.pointArray?.contains(Point(y, x))!!) {
-                    val direction = if (currentShip?.position!!) when {
-                        x > currentShip?.pointArray?.get(0)?.x!! -> RIGHT
-                        x < currentShip?.pointArray?.get(0)?.x!! -> LEFT
-                        y > currentShip?.pointArray?.last()?.y!! -> DOWN
-                        else -> UP
-                    } else when {
-                        x > currentShip?.pointArray?.last()?.x!! -> RIGHT
-                        x < currentShip?.pointArray?.get(0)?.x!! -> LEFT
-                        y > currentShip?.pointArray?.get(0)?.y!! -> DOWN
-                        else -> UP
-                    }
+            ->
+                presenter?.onMove(Point(y,x))
 
-                    deskService.move(direction, currentShip!!)
-                    prepareViewDesk.updateDesk()
-                }
-            }
             MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> { // отпускание
-                currentShip?.let {
-                    deskService.endOfMove(it)
-                    prepareViewDesk.updateDesk()
-                }
-                printArr("end", deskService.array2d)
+                presenter?.onUp()
             }
         }
 

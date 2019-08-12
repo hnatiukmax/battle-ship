@@ -49,8 +49,10 @@ class MainActivity : FullScreenActivity(), View.OnClickListener {
 
         var intent : Intent? = null
         when(v?.id) {
-            R.id.button_single ->
+            R.id.button_single -> {
                 intent = Intent(this, PrepareView::class.java)
+                intent.putExtra("type", TypeGame.SINGLE_GAME)
+            }
             R.id.button_two_players ->
                 intent = null
             R.id.button_play_bluetooth -> {
