@@ -20,7 +20,7 @@ class GameBattleDesk(cxt : Context, attrs : AttributeSet) : GameDesk(cxt, attrs)
 
         canvas.drawColor(colorDesk)
         //other methods
-        drawCurrentCell(canvas)
+        //drawCurrentCell(canvas)
         drawDesk(canvas)
     }
 

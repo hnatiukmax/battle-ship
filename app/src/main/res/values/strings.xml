@@ -10,4 +10,10 @@
     <string name="textView_prepareUp">Place Your Ships</string>
     <string name="textView_prepareDown">Drag and Drop to set Position</string>
     <string name="textView_rotate">ROTATE</string>
+    <string name="button_joinGame">SEARCH OPPONENTS</string>
+    <string name="button_createGame">CREATE GAME</string>
+    <string name="textView_oponents">
+        <u>OPPONENTS</u>
+    </string>
+    <string name="textView_joinCreateInfo">Click <u>SEARCH</u> for find opponents\n<u>CREATE</u> for waiting opponents</string>
 </resources>

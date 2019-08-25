@@ -35,27 +35,27 @@ abstract class GameDesk : View {
 
     //draw base node table according to size
     protected fun drawDesk(canvas: Canvas) {
-        val cvSize = canvas?.width
+        val cvSize  = (canvas.width).toFloat()
         val p = Paint()
         p.strokeWidth = strokeSize
         p.color = colorLine
 
-        val range = (cvSize!! / size).toFloat()
+        val range = (cvSize / size.toFloat())
 
         for (i in 0..size) {
-            canvas?.apply {
+            canvas.apply {
                 drawLine(
                     range * (i + 1),
                     0F,
                     range * (i + 1),
-                    cvSize.toFloat(),
+                    cvSize,
                     p
                 )
 
                 drawLine(
                     0F,
                     range * (i + 1),
-                    cvSize.toFloat(),
+                    cvSize,
                     range * (i + 1),
                     p
                 )

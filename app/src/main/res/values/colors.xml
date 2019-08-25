@@ -21,6 +21,7 @@
     <color name="shipColor">#B06F3917</color>
     <color name="shipChosenColor">#C8496106</color>
     <color name="shipBesideColor">#C8AC2503</color>
+    <color name="chatColor">#8D26263A</color>
 
 
 </resources>

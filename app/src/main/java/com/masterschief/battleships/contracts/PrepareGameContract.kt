@@ -1,10 +1,10 @@
-package com.masterschief.battleships
+package com.masterschief.battleships.contracts
 
 import com.masterschief.battleships.utils.Point
 
-interface PrepareContract {
+interface PrepareGameContract {
 
-    interface ViewContract {
+    interface View {
 
         fun updateDesk()
 
@@ -12,9 +12,9 @@ interface PrepareContract {
 
     }
 
-    interface PresenterContract {
+    interface Presenter {
 
-        fun attachView(view : ViewContract)
+        fun attachView(view : View)
 
         fun detachView()
 
@@ -27,6 +27,8 @@ interface PrepareContract {
         fun onRotate()
 
         fun onRandomlyButton()
+
+        fun getData() : Array<IntArray>
     }
 
 }

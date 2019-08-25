@@ -3,6 +3,7 @@ package com.masterschief.battleships.activities
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.widget.Toast
 
 open class FullScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,6 +15,11 @@ open class FullScreenActivity : AppCompatActivity() {
                 or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 or View.SYSTEM_UI_FLAG_FULLSCREEN
                 or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
+    }
+
+     fun showMessage(message : String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG)
+            .show()
     }
 
 }

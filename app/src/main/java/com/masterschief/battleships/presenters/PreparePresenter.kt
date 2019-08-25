@@ -1,23 +1,23 @@
 package com.masterschief.battleships.presenters
 
 import android.os.Handler
-import com.masterschief.battleships.PrepareContract
+import com.masterschief.battleships.contracts.PrepareGameContract
 import com.masterschief.battleships.gamelogic.*
 import com.masterschief.battleships.utils.Point
 import com.masterschief.battleships.utils.printArr
 
-class PreparePresenter : PrepareContract.PresenterContract {
+class PreparePresenter : PrepareGameContract.Presenter {
 
     private var currentShip: Ship? = null
-    private var view: PrepareContract.ViewContract? = null
-    private lateinit var deskService: DeskService
+    private var view: PrepareGameContract.View? = null
+    private var deskService: DeskService
 
     init {
         deskService = DeskService()
 
     }
 
-    override fun attachView(view: PrepareContract.ViewContract) {
+    override fun attachView(view: PrepareGameContract.View) {
         this.view = view
 
         view.setDesk(deskService.array2d)
@@ -26,6 +26,10 @@ class PreparePresenter : PrepareContract.PresenterContract {
 
     override fun detachView() {
         this.view = null
+    }
+
+    override fun getData(): Array<IntArray> {
+        return deskService.array2d
     }
 
     override fun onDown(point: Point) {
@@ -75,14 +79,15 @@ class PreparePresenter : PrepareContract.PresenterContract {
         currentShip?.let {
             deskService.rotate(it)
             view?.updateDesk()
+
+            Handler().postDelayed(
+                {
+                    deskService.endOfMove(currentShip!!)
+                    view?.updateDesk()
+                },
+                200
+            )
         }
-        Handler().postDelayed(
-            {
-                deskService.endOfMove(currentShip!!)
-                view?.updateDesk()
-            },
-            200
-        )
         printArr("end", deskService.array2d)
     }
 

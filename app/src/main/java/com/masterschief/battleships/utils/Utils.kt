@@ -5,6 +5,7 @@ import com.masterschief.battleships.gamelogic.SHIP_ARR
 import com.masterschief.battleships.gamelogic.Ship
 
 private const val appTag = "eulerSquare"
+const val MY_UUID = "c4368b08-b2f1-11e9-a2a3-2a2ae2dbcce4"
 
 fun log(tag : String, message: String) {
     Log.i(appTag, "$tag $message")
