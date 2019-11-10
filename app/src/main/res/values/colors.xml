@@ -18,8 +18,8 @@
 
     <color name="deskBackgroundColor">#313654</color>
     <color name="deskCellColor">#3A4168</color>
-    <color name="shipColor">#B06F3917</color>
-    <color name="shipChosenColor">#C8496106</color>
+    <color name="shipColor">#AE4A7C9E</color>
+    <color name="shipChosenColor">#5062C4</color>
     <color name="shipBesideColor">#C8AC2503</color>
     <color name="chatColor">#8D26263A</color>
 

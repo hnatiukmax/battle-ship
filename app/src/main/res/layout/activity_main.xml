@@ -10,16 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/mainBackgroundColor"
-        tools:context=".activities.MainActivity">
-
-    <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--app:srcCompat="@drawable/main_back"-->
-            <!--android:scaleType="fitXY"-->
-            <!--android:id="@+id/imageView2" app:layout_constraintStart_toStartOf="parent"-->
-            <!--app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"-->
-            <!--app:layout_constraintBottom_toBottomOf="parent"/>-->
+        tools:context=".presentation.pages.main.MainActivity">
 
     <ImageView
             android:layout_width="0dp"
@@ -37,7 +28,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="35dp"
             android:background="@drawable/button_selector_positive"
-            android:text="@string/button_single"
+            android:text="@string/main_page_button_single"
             style="@style/PrimaryColoredButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -58,7 +49,7 @@
             android:background="@drawable/button_selector_positive"
             style="@style/PrimaryColoredButton"
             android:layout_width="0dp"
-            android:text="@string/button_two_players"
+            android:text="@string/main_page_button_two_players"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="35dp"
@@ -80,7 +71,7 @@
             android:background="@drawable/button_selector_positive"
             style="@style/PrimaryColoredButton"
             android:layout_width="0dp"
-            android:text="@string/button_play_bluetooth"
+            android:text="@string/main_page_button_play_bluetooth"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="35dp"
@@ -100,7 +91,7 @@
             android:background="@drawable/button_selector_positive"
             style="@style/PrimaryColoredButton"
             android:layout_width="0dp"
-            android:text="@string/button_play_network"
+            android:text="@string/main_page_button_play_network"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="35dp"
@@ -118,7 +109,7 @@
             android:background="@drawable/button_selector_negative"
             style="@style/PrimaryColoredButton"
             android:layout_width="0dp"
-            android:text="@string/button_exit"
+            android:text="@string/main_page_button_exit"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="35dp"

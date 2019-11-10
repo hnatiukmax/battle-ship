@@ -13,13 +13,13 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".views.BluetoothGameView">
+        <activity android:name=".presentation.pages.game.GameActivity">
         </activity>
-        <activity android:name=".views.PrepareBluetoothGameView">
+        <activity android:name=".presentation.pages.selectenemy.SelectEnemyActivity">
         </activity>
-        <activity android:name=".views.SingleGameView">
+        <activity android:name=".presentation.pages.game.SingleGameView">
         </activity>
-        <activity android:name=".views.PrepareView">
+        <activity android:name=".presentation.pages.preparegame.PrepareGameActivity">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN"/> -->
@@ -28,7 +28,7 @@
             <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
             <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".activities.MainActivity">
+        <activity android:name=".presentation.pages.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

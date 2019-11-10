@@ -6,7 +6,7 @@
     <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
                                                  android:layout_height="match_parent"
                                                  android:background="@color/mainBackgroundColor"
-                                                 tools:context=".views.PrepareBluetoothGameView">
+                                                 tools:context=".presentation.pages.selectenemy.SelectEnemyActivity">
 
         <Button
                 android:id="@+id/button_createGame"
@@ -47,6 +47,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/button_createGame" android:layout_marginBottom="15dp"/>
 
         <ListView
+                android:id="@+id/devices"
                 android:layout_width="0dp"
                 android:gravity="center_horizontal"
                 android:fontFamily="@font/londrinasolid_regular"
@@ -56,18 +57,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="20dp" android:layout_marginEnd="20dp"
                 app:layout_constraintHorizontal_bias="0.0"
-                android:id="@+id/listView_devices"
                 app:layout_constraintBottom_toTopOf="@+id/button_joinGame" android:layout_marginTop="10dp"
                 app:layout_constraintTop_toTopOf="parent"/>
         <TextView
-                android:text="@string/textView_oponents"
+                android:text="@string/textView_opponents"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView_opponents" app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:fontFamily="@font/londrinasolid_regular" android:textSize="22sp"
                 android:textColor="@android:color/white" android:layout_marginBottom="15dp"
-                app:layout_constraintBottom_toTopOf="@+id/listView_devices" app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintBottom_toTopOf="@+id/devices" app:layout_constraintHorizontal_bias="0.501"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
         <ImageView
                 android:src="@drawable/ic_auto"
@@ -75,12 +75,25 @@
                 android:layout_height="28dp"
                 android:id="@+id/button_updateSearch"
                 app:layout_constraintBottom_toBottomOf="@+id/textView_opponents"
-                app:layout_constraintEnd_toEndOf="@+id/listView_devices"/>
+                app:layout_constraintEnd_toEndOf="@+id/devices"/>
         <TextView
                 android:text="@string/textView_joinCreateInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView_status"
+                android:id="@+id/faq"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/button_joinGame"
+                android:fontFamily="@font/londrinasolid_regular" android:textSize="22sp"
+                android:textColor="@android:color/white" android:textAlignment="center" android:typeface="monospace"
+                android:layout_marginStart="20dp" android:layout_marginEnd="20dp"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/waitingForOpponents"
+                android:visibility="invisible"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="8dp"

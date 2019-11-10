@@ -6,7 +6,7 @@
     <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
                                                  android:layout_height="match_parent"
                                                  android:background="@color/mainBackgroundColor"
-                                                 tools:context=".views.PrepareBluetoothGameView">
+                                                 tools:context=".presentation.pages.selectenemy.SelectEnemyActivity">
 
         <Button
                 android:id="@+id/button_createGame"
@@ -56,11 +56,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="70dp" android:layout_marginEnd="70dp"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintBottom_toTopOf="@+id/button_joinGame" android:id="@+id/listView_devices"
+                app:layout_constraintBottom_toTopOf="@+id/button_joinGame" android:id="@+id/devices"
                 android:layout_marginTop="15dp" app:layout_constraintTop_toBottomOf="@+id/textView_opponents"
                 android:layout_marginBottom="25dp"/>
         <TextView
-                android:text="@string/textView_oponents"
+                android:text="@string/textView_opponents"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView_opponents" app:layout_constraintStart_toStartOf="parent"
@@ -75,13 +75,13 @@
                 android:layout_height="28dp"
                 android:id="@+id/btn_updateSearch"
                 app:layout_constraintBottom_toBottomOf="@+id/textView_opponents"
-                app:layout_constraintEnd_toEndOf="@+id/listView_devices"/>
+                app:layout_constraintEnd_toEndOf="@+id/devices"/>
 
         <TextView
                 android:text="@string/textView_joinCreateInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView_status"
+                android:id="@+id/faq"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="24dp"

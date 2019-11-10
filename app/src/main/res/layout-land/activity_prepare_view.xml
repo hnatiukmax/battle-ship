@@ -7,9 +7,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/mainBackgroundColor"
-            tools:context=".views.PrepareView">
+            tools:context=".presentation.pages.preparegame.PrepareGameActivity">
 
-        <com.masterschief.battleships.uigame.GamePrepareDesk
+        <com.masterschief.battleships.presentation.game.GamePrepareDesk
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintDimensionRatio="w,1:1"

@@ -1,19 +1,25 @@
 <resources>
     <string name="app_name">Battle Ships</string>
-    <string name="button_single">SINGLE</string>
-    <string name="button_two_players">TWO PLAYERS</string>
-    <string name="button_exit">EXIT</string>
-    <string name="button_play_network">ONLINE</string>
-    <string name="button_play_bluetooth">BLUETOOTH</string>
+
+    <!-- Main page   -->
+    <string name="main_page_button_single">SINGLE</string>
+    <string name="main_page_button_two_players">TWO PLAYERS</string>
+    <string name="main_page_button_exit">EXIT</string>
+    <string name="main_page_button_play_network">ONLINE</string>
+    <string name="main_page_button_play_bluetooth">BLUETOOTH</string>
+    <string name="main_page_bluetooth_is_not_available">Bluetooth is not available</string>
+    <string name="main_page_bluetooth_was_not_enabled">Bluetooth was not enabled</string>
+
+    <!-- Prepare Game   -->
     <string name="button_auto">PLACE SHIPS RANDOMLY</string>
     <string name="button_next">CONFIRM SHIPS</string>
     <string name="textView_prepareUp">Place Your Ships</string>
     <string name="textView_prepareDown">Drag and Drop to set Position</string>
     <string name="textView_rotate">ROTATE</string>
+
+    <!-- Select enemy   -->
     <string name="button_joinGame">SEARCH OPPONENTS</string>
     <string name="button_createGame">CREATE GAME</string>
-    <string name="textView_oponents">
-        <u>OPPONENTS</u>
-    </string>
+    <string name="textView_opponents"><u>OPPONENTS</u></string>
     <string name="textView_joinCreateInfo">Click <u>SEARCH</u> for find opponents\n<u>CREATE</u> for waiting opponents</string>
 </resources>
