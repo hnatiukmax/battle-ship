@@ -32,7 +32,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/ownDesk" />
 
-        <com.masterschief.battleships.presentation.game.GameBattleDesk
+        <com.masterschief.battleships.presentation.gameui.GameBattleDesk
                 android:id="@+id/ownDesk"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -49,7 +49,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
-        <com.masterschief.battleships.presentation.game.GameBattleDesk
+        <com.masterschief.battleships.presentation.gameui.GameBattleDesk
                 android:id="@+id/enemiesDesk"
                 android:layout_width="0dp"
                 android:layout_height="0dp"

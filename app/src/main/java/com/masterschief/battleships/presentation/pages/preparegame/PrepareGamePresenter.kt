@@ -26,6 +26,11 @@ class PrepareGamePresenter : PrepareGameContract.Presenter {
     }
 
     override fun onNextClick() {
+        for ((i, item) in deskService.array2d.withIndex()) {
+            for ((j, value) in item.withIndex()) {
+                if (value == CHOSEN) deskService.array2d[i][j] = WHOLE
+            }
+        }
         view?.getNext(deskService.array2d)
     }
 

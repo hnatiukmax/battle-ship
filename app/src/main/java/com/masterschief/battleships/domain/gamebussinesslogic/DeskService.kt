@@ -85,14 +85,18 @@ class DeskService(val sizeDesk: Int = 10) {
 
             for (shipItem in arrayOfShips) {
                 for (point in shipItem.pointArray) {
-                    array2d[point.y][point.x] =
-                        WHOLE
+                    array2d[point.y][point.x] = WHOLE
+                }
+            }
+            for ((i, item) in array2d.withIndex()) {
+                for ((j, value) in item.withIndex()) {
+                    if (value == CHOSEN) array2d[i][j] = WHOLE
                 }
             }
         } else {
             arrayOfShipsCopy = arrayOfShips.copy()
         }
-        //printArr("3.0 after true", array2d)
+        printArr("3.0 after up", array2d)
     }
 
 

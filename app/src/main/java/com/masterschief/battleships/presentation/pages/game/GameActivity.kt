@@ -11,10 +11,9 @@ import com.masterschief.battleships.presentation.pages.base.FullScreenActivity
 import com.masterschief.battleships.databinding.ActivityGameBinding
 import com.masterschief.battleships.domain.entity.Point
 import com.masterschief.battleships.domain.entity.enums.GameType
-import com.masterschief.battleships.presentation.extensions.blink
-import com.masterschief.battleships.presentation.game.GameBattleDesk
+import com.masterschief.battleships.presentation.extensions.playSound
+import com.masterschief.battleships.presentation.gameui.GameBattleDesk
 import com.masterschief.battleships.presentation.pages.main.MainActivity
-import com.masterschief.battleships.presentation.utils.printArr
 import kotlinx.android.synthetic.main.layout_game.*
 
 class GameActivity : FullScreenActivity(), GameContract.View {
@@ -43,9 +42,13 @@ class GameActivity : FullScreenActivity(), GameContract.View {
             ownDesk.apply {
                 initDesk(ownBattleDesk)
                 updateDesk()
+                isOwn = true
             }
 
-            enemiesDesk.setOnAttackListener(deskListener)
+            enemiesDesk.apply {
+                setOnAttackListener(deskListener)
+                isOwn = false
+            }
         }
     }
 
@@ -94,21 +97,23 @@ class GameActivity : FullScreenActivity(), GameContract.View {
     }
 
     override fun updateOwnGameDesk() {
+        playSound(R.raw.defend)
         binding.apply {
             ownDesk.updateDesk()
         }
     }
 
     override fun updateEnemiesDesk() {
+        playSound(R.raw.shoot)
         binding.apply {
             enemiesDesk.updateDesk()
         }
     }
 
-    override fun onFinish() {
+    override fun onFinish(isWin : Boolean) {
         AlertDialog.Builder(this)
-            .setTitle("Do you really want to Sign Out?")
-            .setPositiveButton("Yes") { _, _ ->
+            .setTitle("Game is over. Yor are ${if(isWin) "winner" else "loser"}")
+            .setPositiveButton("Ok") { _, _ ->
                 startActivity(Intent(context, MainActivity::class.java))
                 finish()
             }.show()

@@ -9,6 +9,7 @@ class MyApplication : Application() {
     }
 
     var currentSocket : BluetoothSocket? = null
+    var isAttackAvailabe = false
 
 
     override fun onCreate() {

@@ -19,7 +19,7 @@ interface GameContract {
 
         fun updateEnemiesDesk()
 
-        fun onFinish()
+        fun onFinish(isWin : Boolean)
     }
 
     interface Presenter : BasePresenter, GameEventListener, GameController.OnFinishGameListener {

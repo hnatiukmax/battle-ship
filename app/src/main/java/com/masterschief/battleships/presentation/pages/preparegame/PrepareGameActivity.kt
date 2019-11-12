@@ -12,7 +12,7 @@ import android.widget.Toast
 import com.masterschief.battleships.R
 import com.masterschief.battleships.presentation.pages.base.FullScreenActivity
 import com.masterschief.battleships.databinding.ActivityPrepareViewBinding
-import com.masterschief.battleships.presentation.game.GameDeskContract
+import com.masterschief.battleships.presentation.gameui.GameDeskContract
 import com.masterschief.battleships.domain.entity.Point
 import com.masterschief.battleships.domain.entity.enums.GameType
 import com.masterschief.battleships.domain.entity.enums.GameType.*

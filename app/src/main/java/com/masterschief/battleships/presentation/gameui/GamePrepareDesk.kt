@@ -1,4 +1,4 @@
-package com.masterschief.battleships.presentation.game
+package com.masterschief.battleships.presentation.gameui
 
 import android.content.Context
 import android.graphics.Canvas
@@ -40,7 +40,8 @@ class GamePrepareDesk(cxt: Context, attrs: AttributeSet) : GameDesk(cxt, attrs),
             for ((r, intArray) in it.withIndex()) {
                 for ((c, value) in intArray.withIndex()) {
 
-                    if (it[r][c] == WHOLE || it[r][c] == CHOSEN || it[r][c] == BESIDE) {
+                    if (value == WHOLE || value == CHOSEN || value == BESIDE) {
+
 
                         val range = (canvas.width / size).toFloat()
                         val top = r * range
@@ -50,7 +51,7 @@ class GamePrepareDesk(cxt: Context, attrs: AttributeSet) : GameDesk(cxt, attrs),
 
                         canvas.drawRect(
                             left, top, right, bottom,
-                            when (it[r][c]) {
+                            when (value) {
                                 WHOLE -> pWhole
                                 CHOSEN -> pChosen
                                 BESIDE -> pBeside

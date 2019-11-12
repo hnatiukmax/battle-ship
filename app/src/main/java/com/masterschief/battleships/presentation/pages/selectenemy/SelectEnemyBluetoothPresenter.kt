@@ -79,6 +79,7 @@ class SelectEnemyBluetoothPresenter : SelectEnemyContract.Presenter {
     }
 
     override fun onCreateGame() {
+        MyApplication.instance.isAttackAvailabe = true
         val discoverableIntent = Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE)
         discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 20)
         view?.getActivity()?.startActivity(discoverableIntent)
@@ -102,6 +103,7 @@ class SelectEnemyBluetoothPresenter : SelectEnemyContract.Presenter {
     }
 
     override fun onListViewClick(position : Int) {
+        MyApplication.instance.isAttackAvailabe = false
         disposable.add(connectToOpponent(discoveredDevicesList.elementAt(position))
             .subscribeOn(Schedulers.io())
             .subscribe(callBackConnect,
@@ -140,7 +142,9 @@ class SelectEnemyBluetoothPresenter : SelectEnemyContract.Presenter {
     }
 
     private val callBackConnect:  (BluetoothSocket) -> Unit = { socket ->
-        MyApplication.instance.currentSocket = socket
+        MyApplication.instance.apply {
+            currentSocket = socket
+        }
 
         view?.apply {
             handlerInvisible()

@@ -1,4 +1,4 @@
-package com.masterschief.battleships.presentation.game
+package com.masterschief.battleships.presentation.gameui
 
 import android.content.Context
 import android.graphics.Canvas
@@ -21,6 +21,7 @@ abstract class GameDesk : View {
     protected val colorCell = resources.getColor(R.color.deskCellColor)
     protected val colorShip = resources.getColor(R.color.shipColor)
     protected val colorChosenShip = resources.getColor(R.color.shipChosenColor)
+    protected val colorBesideBattleShip = resources.getColor(R.color.shipBesideBattleColor)
     protected val colorBesideShip = resources.getColor(R.color.shipBesideColor)
 
     /*

@@ -1,21 +1,22 @@
-package com.masterschief.battleships.presentation.game
+package com.masterschief.battleships.presentation.gameui
 
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.os.Build
 import android.util.AttributeSet
 import android.view.MotionEvent
-import com.masterschief.battleships.domain.entity.BESIDE
-import com.masterschief.battleships.domain.entity.CHOSEN
-import com.masterschief.battleships.domain.entity.Point
-import com.masterschief.battleships.domain.entity.WHOLE
-import kotlinx.android.synthetic.main.activity_game.view.*
+import androidx.annotation.RequiresApi
+import com.masterschief.battleships.R
+import com.masterschief.battleships.domain.entity.*
 
 class GameBattleDesk(cxt: Context, attrs: AttributeSet) : GameDesk(cxt, attrs),
     GameDeskContract.BattleDesk {
 
     private var onAttackListener: OnAttackListener? = null
     private lateinit var currentCell: Point
+    private val shootedCell = resources.getDrawable(R.drawable.ic_shooted, null)
+    var isOwn = true
 
     init {
         rootView.setOnTouchListener { v, event ->
@@ -51,6 +52,7 @@ class GameBattleDesk(cxt: Context, attrs: AttributeSet) : GameDesk(cxt, attrs),
         drawDesk(canvas)
     }
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun drawPrepareShips(canvas: Canvas) {
         gameArray?.let {
             val pWhole = Paint()
@@ -60,28 +62,32 @@ class GameBattleDesk(cxt: Context, attrs: AttributeSet) : GameDesk(cxt, attrs),
             pChosen.color = colorChosenShip
 
             val pBeside = Paint()
-            pBeside.color = colorBesideShip
+            pBeside.color = colorBesideBattleShip
 
             for ((r, intArray) in it.withIndex()) {
                 for ((c, value) in intArray.withIndex()) {
 
-                    if (it[r][c] == WHOLE || it[r][c] == CHOSEN || it[r][c] == BESIDE) {
+                    val range = (canvas.width / size).toFloat()
+                    val top = r * range
+                    val bottom = top + range
+                    val left = c * range
+                    val right = left + range
 
-                        val range = (canvas.width / size).toFloat()
-                        val top = r * range
-                        val bottom = top + range
-                        val left = c * range
-                        val right = left + range
-
-                        canvas.drawRect(
-                            left, top, right, bottom,
-                            when (it[r][c]) {
-                                WHOLE -> pWhole
-                                CHOSEN -> pChosen
-                                BESIDE -> pBeside
-                                else -> Paint()
+                    when {
+                        isOwn && (value == WHOLE) -> canvas.drawRect(left, top, right, bottom, pWhole)
+                        value == BESIDE -> canvas.drawRect(left, top, right, bottom, pBeside)
+                        value == SHOOTED -> {
+                            val padding = 10
+                            shootedCell.apply {
+                                setBounds(
+                                    left.toInt() + padding,
+                                    top.toInt() + padding,
+                                    right.toInt() - padding,
+                                    bottom.toInt() - padding
+                                )
+                                draw(canvas)
                             }
-                        )
+                        }
                     }
                 }
             }

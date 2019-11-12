@@ -1,9 +1,6 @@
 package com.masterschief.battleships.domain.gamebussinesslogic
 
-import com.masterschief.battleships.domain.entity.BESIDE
-import com.masterschief.battleships.domain.entity.Point
-import com.masterschief.battleships.domain.entity.SHOOTED
-import com.masterschief.battleships.domain.entity.WHOLE
+import com.masterschief.battleships.domain.entity.*
 
 class GameController(
     private val ownDesk : Array<IntArray>,
@@ -11,40 +8,54 @@ class GameController(
     private val onFinishListener : OnFinishGameListener
 ) {
 
-    fun onDefend(point : Point) {
-        ownDesk[point.y][point.x] =
+    fun onDefend(point : Point) : Boolean {
+        val result =
             if (ownDesk[point.y][point.x] == WHOLE) {
-                SHOOTED
+                ownDesk[point.y][point.x] = SHOOTED
+                false
             } else {
-                BESIDE
+                ownDesk[point.y][point.x] = BESIDE
+                true
             }
         if (isFinish(ownDesk)) {
-            onFinishListener.onFinishGame(false)
+            onFinishListener.onFinishGame(false, point)
         }
+        return result
     }
 
-    fun onAttack(point : Point) : Boolean {
-        return if (enemiesDesk[point.y][point.x] == BESIDE) {
-            false
-        } else {
-            enemiesDesk[point.y][point.x] = SHOOTED
-            if (isFinish(enemiesDesk)) {
-                onFinishListener.onFinishGame(true)
+    fun onAttack(point : Point) : Boolean? {
+        val result = when (enemiesDesk[point.y][point.x]) {
+            BESIDE -> {
+                null
             }
-            true
+            WHOLE -> {
+                enemiesDesk[point.y][point.x] = SHOOTED
+                true
+            }
+            FREE_CELL -> {
+                enemiesDesk[point.y][point.x] = BESIDE
+                false
+            }
+            else -> false
         }
+        if (isFinish(enemiesDesk)) {
+            onFinishListener.onFinishGame(true, point)
+        }
+
+        return result
     }
 
     private fun isFinish(desk : Array<IntArray>) : Boolean {
         for (array in desk) {
             for (element in array) {
-                if (element == WHOLE) return true
+                if (element == WHOLE) return false
             }
         }
         return true
+
     }
 
     interface OnFinishGameListener {
-        fun onFinishGame(isWin : Boolean)
+        fun onFinishGame(isWin : Boolean, point: Point)
     }
 }

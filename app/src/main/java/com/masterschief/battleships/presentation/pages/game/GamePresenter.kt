@@ -19,7 +19,7 @@ class GamePresenter(
     private lateinit var controller : GameController
     private lateinit var ownDesk : Array<IntArray>
     private lateinit var enemiesDesk: Array<IntArray>
-    private var isAttackAvailable = true
+    private var isAttackAvailable : Boolean? = null
 
     init {
         when(gameType) {
@@ -48,6 +48,7 @@ class GamePresenter(
                 ))
 
             ownDesk = view.ownBattleDesk
+            isAttackAvailable = MyApplication.instance.isAttackAvailabe
         }
     }
 
@@ -59,16 +60,25 @@ class GamePresenter(
         this.enemiesDesk = enemiesDesk
         controller = GameController(ownDesk, enemiesDesk, this)
         view?.setEnemiesDesk(enemiesDesk)
+
+        if (isAttackAvailable == null) {
+            sendData(Message(
+                type = MessageType.CHAT,
+                message = "false"
+            ))
+        }
     }
 
     override fun onNewMessageChat(messageText: String) {
-        // todo - message battle chat
+        isAttackAvailable = messageText.toBoolean()
     }
 
     override fun onDefend(point: Point) {
-        isAttackAvailable = true
-        controller.onDefend(point)
-        view?.updateOwnGameDesk()
+        isAttackAvailable = controller.onDefend(point)
+        view?.apply {
+            updateOwnGameDesk()
+            if (isAttackAvailable == true) showMessage("Your can attack!")
+        }
     }
 
     override fun sendMessage(messageText: String) {
@@ -79,16 +89,22 @@ class GamePresenter(
     }
 
     override fun onAttack(point: Point) {
-        if (isAttackAvailable) {
-            if (controller.onAttack(point)) {
-                sendData(
-                    Message(
-                        type = MessageType.ATTACK,
-                        message = point
+        if (isAttackAvailable == true) {
+            when(val result = controller.onAttack(point)) {
+                false, true -> {
+                    sendData(
+                        Message(
+                            type = MessageType.ATTACK,
+                            message = point
+                        )
                     )
-                )
-                view?.updateEnemiesDesk()
-                isAttackAvailable = false
+                    view?.updateEnemiesDesk()
+                    isAttackAvailable = result
+                }
+                null -> {
+                    isAttackAvailable = true
+                    view?.showMessage("Cell is already checked. Attack the enemies one more!")
+                }
             }
         } else {
             view?.showMessage("Wait for enemies attack!")
@@ -103,7 +119,14 @@ class GamePresenter(
         gameRepository?.sendMessage(message)
     }
 
-    override fun onFinishGame(isWin: Boolean) {
-        view?.onFinish()
+    override fun onFinishGame(isWin: Boolean, point: Point) {
+        if (isWin) sendData(
+            Message(
+                type = MessageType.ATTACK,
+                message = point
+            )
+        )
+        MyApplication.instance.currentSocket?.close()
+        view?.onFinish(isWin)
     }
 }

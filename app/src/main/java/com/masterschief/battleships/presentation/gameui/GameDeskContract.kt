@@ -1,7 +1,6 @@
-package com.masterschief.battleships.presentation.game
+package com.masterschief.battleships.presentation.gameui
 
 import android.view.MotionEvent
-import com.masterschief.battleships.domain.entity.Point
 
 interface GameDeskContract {
 

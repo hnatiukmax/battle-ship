@@ -8,7 +8,7 @@
             android:layout_height="match_parent"
             android:background="@color/mainBackgroundColor">
 
-        <com.masterschief.battleships.presentation.game.GameBattleDesk
+        <com.masterschief.battleships.presentation.gameui.GameBattleDesk
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:id="@+id/enemiesDesk"
@@ -21,7 +21,7 @@
                 app:layout_constraintDimensionRatio="1:1" app:layout_constraintStart_toEndOf="@+id/arrow"
                 android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="1.0"/>
 
-        <com.masterschief.battleships.presentation.game.GameBattleDesk
+        <com.masterschief.battleships.presentation.gameui.GameBattleDesk
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:id="@+id/ownDesk"
