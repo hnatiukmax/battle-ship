@@ -17,9 +17,21 @@
     <string name="textView_prepareDown">Drag and Drop to set Position</string>
     <string name="textView_rotate">ROTATE</string>
 
-    <!-- Select enemy   -->
+    <!-- Select enemy  -->
     <string name="button_joinGame">SEARCH OPPONENTS</string>
     <string name="button_createGame">CREATE GAME</string>
     <string name="textView_opponents"><u>OPPONENTS</u></string>
     <string name="textView_joinCreateInfo">Click <u>SEARCH</u> for find opponents\n<u>CREATE</u> for waiting opponents</string>
+
+    <!-- Game Page   -->
+    <string name="game_page_you">You</string>
+    <string name="game_page_ships">Ships : </string>
+    <string name="game_page_enemy">Enemy</string>
+    <string name="game_page_count_of_ships">%1$s</string>
+    <string name="game_page_give_up_dialog_message">Do you really want to give up?</string>
+    <string name="game_page_give_up_dialog_positive">Yes</string>
+    <string name="game_page_give_up_dialog_negative">Back to the battle!</string>
+    <string name="game_page_android">Android</string>
+
+    <!--    -->
 </resources>

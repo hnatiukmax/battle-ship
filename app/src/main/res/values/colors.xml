@@ -4,12 +4,12 @@
     <color name="colorPrimaryDark">#04273D</color>
     <color name="colorAccent">#04273D</color>
 
-    <color name="mainBackgroundColor">#1C1E30</color>
+    <color name="mainBackgroundColor">#10111C</color>
 
     <!--button-->
     <color name="mainButtonColor">#8D094A74</color>
     <color name="backButtonColor">#2A375E</color>
-    <color name="backButon">#2A697177</color>
+    <color name="backButton">#2A697177</color>
 
     <color name="button_exit">#7C380A</color>
     <color name="button_exit_back">#8F8B3624</color>

@@ -1,21 +1,36 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="PrimaryColoredButton" parent="Base.Widget.AppCompat.Button.Colored">
+    <style name="AppTheme.PrimaryColoredButton" parent="Base.Widget.AppCompat.Button.Colored">
         <item name="colorButtonNormal">@color/mainButtonColor</item>
         <item name="colorControlHighlight">@color/backButtonColor</item>
+        <item name="android:textAppearance">@style/AppTheme.Text.Medium</item>
+        <item name="android:paddingStart">25dp</item>
+        <item name="android:paddingEnd">35dp</item>
+    </style>
+    
+    <style name="AppTheme.Text">
+        <item name="android:fontFamily">@font/londrina_solid_regular</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    
+    <style name="AppTheme.Text.Small">
+        <item name="android:textSize">@dimen/textSizeSmall</item>
     </style>
 
-    <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
-
+    <style name="AppTheme.Text.Medium">
+        <item name="android:textSize">@dimen/textSizeMedium</item>
     </style>
 
+    <style name="AppTheme.Text.Large">
+        <item name="android:textSize">@dimen/textSizeLarge</item>
+    </style>
+    
 </resources>

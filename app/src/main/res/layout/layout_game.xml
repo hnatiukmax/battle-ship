@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-        xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -8,45 +9,41 @@
             android:background="@color/mainBackgroundColor">
 
         <TextView
-                android:id="@+id/textView15"
+                android:id="@+id/labelEnemiesShips"
+                style="@style/AppTheme.Text.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="8dp"
-                android:fontFamily="@font/londrinasolid_regular"
-                android:text="SHIPS :"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
+                android:text="@string/game_page_ships"
+                android:textAllCaps="true"
                 app:layout_constraintBottom_toTopOf="@+id/enemiesDesk"
                 app:layout_constraintEnd_toStartOf="@+id/enemiesShipCount" />
 
         <TextView
-                android:id="@+id/you"
+                android:id="@+id/labelYou"
+                style="@style/AppTheme.Text.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="40dp"
-                android:fontFamily="@font/londrinasolid_regular"
-                android:text="YOU"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/ownDesk" />
+                android:layout_marginTop="10dp"
+                android:text="@string/game_page_you"
+                android:textAllCaps="true"
+                app:layout_constraintStart_toStartOf="@+id/ownDesk"
+                app:layout_constraintTop_toTopOf="parent" />
 
         <com.masterschief.battleships.presentation.gameui.GameBattleDesk
                 android:id="@+id/ownDesk"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginStart="16dp"
-
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="20dp"
                 app:layout_constraintBottom_toTopOf="@+id/enemiesName"
                 app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintEnd_toStartOf="@+id/textView5"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/chat"
+                app:layout_constraintStart_toEndOf="@id/whiteFlag"
+                app:layout_constraintTop_toBottomOf="@id/labelYou"
                 app:layout_constraintVertical_bias="0.0" />
 
         <com.masterschief.battleships.presentation.gameui.GameBattleDesk
@@ -62,74 +59,65 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/labelOwnShips"
+                style="@style/AppTheme.Text.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:fontFamily="@font/londrinasolid_regular"
-                android:text="SHIPS :"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
+                android:text="@string/game_page_ships"
+                android:textAllCaps="true"
+                app:layout_constraintBottom_toBottomOf="@+id/ownShipCount"
                 app:layout_constraintEnd_toStartOf="@+id/ownShipCount"
                 app:layout_constraintTop_toTopOf="@+id/ownShipCount" />
 
         <TextView
                 android:id="@+id/ownShipCount"
+                style="@style/AppTheme.Text.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/londrinasolid_regular"
-                android:text="10"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/you"
-                app:layout_constraintTop_toBottomOf="@+id/you" />
+                android:text="@string/game_page_count_of_ships"
+                app:layout_constraintEnd_toEndOf="@+id/ownDesk"
+                app:layout_constraintTop_toTopOf="@+id/labelYou"
+                tools:text="10" />
 
         <TextView
                 android:id="@+id/enemiesName"
+                style="@style/AppTheme.Text.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:fontFamily="@font/londrinasolid_regular"
-                android:text="ENEMY "
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
+                android:text="@string/game_page_enemy"
+                android:textAllCaps="true"
                 app:layout_constraintBottom_toTopOf="@+id/enemiesDesk"
                 app:layout_constraintStart_toStartOf="@+id/enemiesDesk" />
 
         <TextView
-                android:text="10"
+                android:id="@+id/enemiesShipCount"
+                style="@style/AppTheme.Text.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/enemiesShipCount"
-                android:textSize="16sp"
-                android:textColor="@android:color/white" android:fontFamily="@font/londrinasolid_regular"
-                app:layout_constraintEnd_toEndOf="@+id/enemiesDesk" android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/enemiesDesk"/>
+                android:layout_marginBottom="8dp"
+                android:text="@string/game_page_count_of_ships"
+                app:layout_constraintBottom_toTopOf="@+id/enemiesDesk"
+                app:layout_constraintEnd_toEndOf="@+id/enemiesDesk"
+                tools:text="10" />
 
         <ImageView
                 android:id="@+id/chat"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="12dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:visibility="visible"
-                app:layout_constraintEnd_toEndOf="@+id/whiteFlag"
-                app:layout_constraintStart_toStartOf="@+id/whiteFlag"
-                app:layout_constraintTop_toBottomOf="@+id/whiteFlag"
-                app:srcCompat="@drawable/messages" />
+                app:layout_constraintBottom_toBottomOf="@+id/ownDesk"
+                app:layout_constraintEnd_toEndOf="@+id/enemiesShipCount"
+                app:srcCompat="@drawable/ic_chat" />
 
         <ImageView
                 android:id="@+id/whiteFlag"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="15dp"
-                app:layout_constraintEnd_toEndOf="@+id/ownShipCount"
-                app:layout_constraintStart_toStartOf="@+id/textView5"
-                app:layout_constraintTop_toBottomOf="@+id/textView5"
-                app:srcCompat="@drawable/flag" />
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintBottom_toBottomOf="@+id/ownDesk"
+                app:layout_constraintStart_toStartOf="@+id/enemiesName"
+                app:srcCompat="@drawable/ic_flag" />
 
     </android.support.constraint.ConstraintLayout>
 

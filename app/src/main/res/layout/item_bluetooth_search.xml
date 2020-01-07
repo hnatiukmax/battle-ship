@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/list_item"
+        style="@style/AppTheme.Text.Large"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:drawableStart="@drawable/ic_enemy"
         android:gravity="center"
-        android:id="@+id/list_item" android:textColor="@android:color/white"
-        android:fontFamily="@font/londrinasolid_regular" android:textSize="20sp"
+        android:paddingTop="15dp"
+        android:paddingEnd="15dp"
         android:paddingBottom="15dp"
-        android:paddingRight="15dp"
-        android:drawableLeft="@drawable/icon_enemy"
-        android:paddingTop="15dp" xmlns:android="http://schemas.android.com/apk/res/android"/>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"/>
